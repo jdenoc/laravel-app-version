@@ -1,0 +1,41 @@
+{
+    "name": "jdenoc/laravel-app-version",
+    "description": "artisan app:version",
+    "keywords": [
+        "jdenoc",
+        "laravel",
+        "artisan",
+        "version"
+    ],
+    "homepage": "https://github.com/jdenoc/laravel-app-version",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jdenoc\\LaravelAppVersion\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jdenoc\\LaravelAppVersion\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jdenoc\\LaravelAppVersion\\AppVersionServiceProvider"
+            ]
+        }
+    }
+}
