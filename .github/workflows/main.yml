@@ -24,9 +24,9 @@ jobs:
 
       - name: Cache Composer dependencies
         uses: actions/cache@v2
-          with:
-            path: /tmp/composer-cache
-            key: cache-composer-${{ hashFiles('composer.lock') }}
+        with:
+          path: /tmp/composer-cache
+          key: cache-composer-${{ hashFiles('composer.lock') }}
 
       - uses: php-actions/composer@v5
         with:
