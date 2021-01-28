@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/composer-cache
-          key: cache-composer-${{ hashFiles('composer.lock') }}
+          key: cache-composer-${{ hashFiles('composer.lock') }}-${{ matrix.php-versions }}
 
       - uses: php-actions/composer@v5
         with:
