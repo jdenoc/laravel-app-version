@@ -17,8 +17,12 @@ on:
 jobs:
 
   unit-test:
-    runs-on: ubuntu-latest
     timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['7.2', '7.3', '7.4']
+    name: PHP ${{ matrix.php-version }}
     steps:
       - uses: actions/checkout@v2
 
@@ -26,16 +30,16 @@ jobs:
         uses: actions/cache@v2
         with:
           path: /tmp/composer-cache
-          key: cache-composer-${{ hashFiles('composer.lock') }}
+          key: cache-composer-${{ hashFiles('composer.lock') }}-${{ matrix.php-version }}
 
       - uses: php-actions/composer@v5
         with:
-          php_version: 7.2
+          php_version: ${{ matrix.php-version }}
           version: 1
 
       - uses: php-actions/phpunit@v2
         with:
-          php_version: 7.2
+          php_version: ${{ matrix.php-version }}
           version: 8
           configuration: phpunit.xml.dist
 
