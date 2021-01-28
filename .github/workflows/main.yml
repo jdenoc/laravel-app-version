@@ -17,8 +17,12 @@ on:
 jobs:
 
   unit-test:
-    runs-on: ubuntu-latest
     timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['7.0', '7.1', '7.2', '7.3', '7.4', '8.0']
+    name: PHP ${{ matrix.php-versions }}
     steps:
       - uses: actions/checkout@v2
 
@@ -30,12 +34,12 @@ jobs:
 
       - uses: php-actions/composer@v5
         with:
-          php_version: 7.2
+          php_version: ${{ matrix.php-versions }}
           version: 1
 
       - uses: php-actions/phpunit@v2
         with:
-          php_version: 7.2
+          php_version: ${{ matrix.php-versions }}
           version: 8
           configuration: phpunit.xml.dist
 
