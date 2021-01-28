@@ -1,6 +1,8 @@
 # laravel-app-version
-[![GitHub release](https://img.shields.io/github/release/jdenoc/laravel-app-version.svg)](https://github.com/jdenoc/laravel-app-version/releases/latest)
-![Github Actions](https://github.com/jdenoc/laravel-app-version/workflows/Laravel%20artisan%20app:version/badge.svg?branch=main)
+
+[![release](https://img.shields.io/github/release/jdenoc/laravel-app-version.svg?style=flat-square)](https://github.com/jdenoc/laravel-app-version/releases/latest)
+[![Github Actions](https://img.shields.io/github/workflow/status/jdenoc/laravel-app-version/Laravel%20artisan%20app:version?style=flat-square)](https://github.com/jdenoc/laravel-app-version/actions)
+[![License](https://img.shields.io/github/license/jdenoc/laravel-app-version?style=flat-square)](LICENSE)
 
 ## Installation
 
