@@ -1,5 +1,5 @@
 # laravel-app-version
-[![GitHub release](https://img.shields.io/github/release/jdenoc/laravel-app-version.svg)](https://github.com/jdenoc/money-tracker/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/jdenoc/laravel-app-version.svg)](https://github.com/jdenoc/laravel-app-version/releases/latest)
 ![Github Actions](https://github.com/jdenoc/laravel-app-version/workflows/Laravel%20artisan%20app:version/badge.svg?branch=main)
 
 ## Installation
@@ -27,8 +27,6 @@ vendor/bin/phpunit
 ```
 
 ### PHP Version Support
-- 7.0
-- 7.1
 - 7.2
 - 7.3
 - 7.4
