@@ -1,4 +1,4 @@
-# .github/workflows/main.yml
+# .github/workflows/tests.yml
 name: Laravel artisan app:version
 
 # Controls when the action will run.
