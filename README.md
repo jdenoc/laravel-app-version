@@ -33,6 +33,11 @@ vendor/bin/phpunit
 - 7.3
 - 7.4
 
+Laravel PHP Version
+- Laravel 7.x
+- Laravel 6.x
+  - Use version [1.0.2](https://github.com/jdenoc/laravel-app-version/tree/1.0.2)
+
 ### FAQ
 
 >**Q:** _I've tried setting the app version, but it doesn't seem to be changing?_
