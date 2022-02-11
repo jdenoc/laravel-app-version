@@ -32,6 +32,7 @@ vendor/bin/phpunit
 - 7.2
 - 7.3
 - 7.4
+- 8.0
 
 Laravel PHP Version
 - Laravel 7.x
