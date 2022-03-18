@@ -31,7 +31,7 @@ class AppVersionTest extends TestCase {
     {
         parent::setUp();
         $faker = FakerFactory::create();
-        $this->_test_version = $faker->randomDigitNotNull.'.'.$faker->randomDigitNotNull.'.'.$faker->randomDigitNotNull.'-test-'.$faker->word;
+        $this->_test_version = $faker->randomDigitNotNull().'.'.$faker->randomDigitNotNull().'.'.$faker->randomDigitNotNull().'-test-'.$faker->word();
     }
 
     public function getEnvironmentSetUp($app){

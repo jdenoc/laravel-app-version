@@ -29,13 +29,14 @@ vendor/bin/phpunit
 ```
 
 ### PHP Version Support
-- 7.2
 - 7.3
 - 7.4
 - 8.0
 
 Laravel PHP Version
+- Laravel 8.x
 - Laravel 7.x
+  - Use version [1.1.1](https://github.com/jdenoc/laravel-app-version/tree/1.1.1)
 - Laravel 6.x
   - Use version [1.0.2](https://github.com/jdenoc/laravel-app-version/tree/1.0.2)
 
