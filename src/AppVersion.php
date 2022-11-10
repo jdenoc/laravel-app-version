@@ -35,14 +35,14 @@ class AppVersion extends Command {
      *
      * @return mixed
      */
-    public function handle(){
-        if(!$this->environmentFileExists()){
+    public function handle() {
+        if (!$this->environmentFileExists()) {
             $this->error(sprintf(self::ERROR_STRING_ENV_FILE_MISSING, basename($this->getEnvironmentFilePath())));
             return;
         }
 
         $new_version = $this->argument(self::ARG_NAME);
-        if(empty($new_version)){
+        if (empty($new_version)) {
             $current_version = config(self::CONFIG_PARAM);  // getting config value from memory
             $current_version = empty($current_version) ? self::INFO_STRING_NO_VERSION : $current_version;
             $this->info(sprintf(self::INFO_STRING_GET_VERSION, $current_version));
@@ -58,7 +58,7 @@ class AppVersion extends Command {
     /**
      * @return string
      */
-    protected function getEnvironmentFilePath(){
+    protected function getEnvironmentFilePath() {
         return $this->laravel->environmentFilePath();
     }
 
@@ -67,7 +67,7 @@ class AppVersion extends Command {
      *
      * @return bool
      */
-    protected function environmentFileExists(): bool{
+    protected function environmentFileExists(): bool {
         return File::exists($this->getEnvironmentFilePath());
     }
 
@@ -78,10 +78,10 @@ class AppVersion extends Command {
      * @param string  $version
      * @return void
      */
-    protected function writeNewEnvironmentFileWith(string $version){
+    protected function writeNewEnvironmentFileWith(string $version) {
         $env_file_path = $this->getEnvironmentFilePath();
         $file_contents = file_get_contents($env_file_path);
-        if(strpos($file_contents, self::ENV_PARAM.'=') === false){
+        if (!str_contains($file_contents, self::ENV_PARAM.'=')) {
             $updated_file_contents = $file_contents."\n".self::ENV_PARAM.'='.$version;
         } else {
             $updated_file_contents = preg_replace(
@@ -99,8 +99,9 @@ class AppVersion extends Command {
      *
      * @return string
      */
-    protected function versionReplacementPattern(): string{
+    protected function versionReplacementPattern(): string {
         $escaped = preg_quote('='.config(self::CONFIG_PARAM), '/');
         return "/^".self::ENV_PARAM."{$escaped}/m";
     }
+
 }

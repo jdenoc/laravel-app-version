@@ -17,36 +17,28 @@ use Orchestra\Testbench\TestCase;
  */
 class AppVersionTest extends TestCase {
 
-    /**
-     * @var string
-     */
-    private $_command = "app:version";
+    private string $_command = "app:version";
+    private string $_test_version;
 
-    /**
-     * @var string
-     */
-    private $_test_version;
-
-    public function setUp(): void
-    {
+    public function setUp(): void {
         parent::setUp();
         $faker = FakerFactory::create();
         $this->_test_version = $faker->randomDigitNotNull().'.'.$faker->randomDigitNotNull().'.'.$faker->randomDigitNotNull().'-test-'.$faker->word();
     }
 
-    public function getEnvironmentSetUp($app){
+    protected function defineEnvironment($app) {
+        $app['config']->set('app.version', "");
         // create .env file
         $env_file_path = $app->environmentFilePath();
         file_put_contents($env_file_path, AppVersionCommand::ENV_PARAM.'=');
         $this->assertFileExists($env_file_path);
     }
 
-    protected function getPackageProviders($app)
-    {
+    protected function getPackageProviders($app) {
         return [AppVersionServiceProvider::class];
     }
 
-    public function testCommandInArtisanList(){
+    public function testCommandInArtisanList() {
         // GIVEN - nothing
 
         // WHEN
@@ -57,7 +49,7 @@ class AppVersionTest extends TestCase {
         $this->assertStringContainsString($this->_command, $result_as_text);
     }
 
-    public function testEnvFileDoesNotExist(){
+    public function testEnvFileDoesNotExist() {
         // GIVEN - see setUp()
         $env_file_path = $this->app->environmentFilePath();
         unlink($env_file_path);
@@ -70,7 +62,7 @@ class AppVersionTest extends TestCase {
         $this->assertEquals(sprintf(AppVersionCommand::ERROR_STRING_ENV_FILE_MISSING, basename($env_file_path)), $result_as_text);
     }
 
-    public function testSettingAppVersionViaArgument(){
+    public function testSettingAppVersionViaArgument() {
         // GIVEN - see setUp()
         $env_file_path = $this->app->environmentFilePath();
         $this->assertFileExists($env_file_path);
@@ -92,7 +84,7 @@ class AppVersionTest extends TestCase {
         );
     }
 
-    public function testSettingAppVersionWhenEnvVariableDoesNotExist(){
+    public function testSettingAppVersionWhenEnvVariableDoesNotExist() {
         // GIVEN - see setUp()
         $env_file_path = $this->app->environmentFilePath();
         file_put_contents($env_file_path, '');
@@ -117,7 +109,7 @@ class AppVersionTest extends TestCase {
         );
     }
 
-    public function testGetAppVersionWhereVersionNotSet(){
+    public function testGetAppVersionWhereVersionNotSet() {
         // GIVEN - see setUp()
 
         // WHEN
@@ -128,7 +120,7 @@ class AppVersionTest extends TestCase {
         $this->assertEquals(sprintf(AppVersionCommand::INFO_STRING_GET_VERSION, AppVersionCommand::INFO_STRING_NO_VERSION), $result_as_text);
     }
 
-    public function testGettingAppVersion(){
+    public function testGettingAppVersion() {
         // GIVEN - see setUp()
 
         // WHEN
