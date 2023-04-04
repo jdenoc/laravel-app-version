@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.0']
+        php-version: ['8.1']
     name: PHP ${{ matrix.php-version }}
     steps:
       - uses: actions/checkout@v3
@@ -35,12 +35,11 @@ jobs:
       - uses: php-actions/composer@v6
         with:
           php_version: ${{ matrix.php-version }}
-          version: 1
 
       - uses: php-actions/phpunit@v3
         with:
           php_version: ${{ matrix.php-version }}
-          version: 9.5
+          version: 10
           configuration: phpunit.xml.dist
 
   notification:
