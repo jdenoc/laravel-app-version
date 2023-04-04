@@ -32,10 +32,8 @@ class AppVersion extends Command {
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle() {
+    public function handle(): void {
         if (!$this->environmentFileExists()) {
             $this->error(sprintf(self::ERROR_STRING_ENV_FILE_MISSING, basename($this->getEnvironmentFilePath())));
             return;
@@ -52,20 +50,14 @@ class AppVersion extends Command {
         $this->writeNewEnvironmentFileWith($new_version);
         config([self::CONFIG_PARAM=>$new_version]);  // setting the config value in memory
         $this->info(sprintf(self::INFO_STRING_SET_VERSION, $new_version));
-        return;
     }
 
-    /**
-     * @return string
-     */
-    protected function getEnvironmentFilePath() {
+    protected function getEnvironmentFilePath(): string {
         return $this->laravel->environmentFilePath();
     }
 
     /**
      * Makes sure that the (provided) environment file exists
-     *
-     * @return bool
      */
     protected function environmentFileExists(): bool {
         return File::exists($this->getEnvironmentFilePath());
@@ -74,11 +66,8 @@ class AppVersion extends Command {
     /**
      * Write a new environment file with the given key.
      *     Taken & modified from Illuminate\Foundation\Console\KeyGenerateCommand
-     *
-     * @param string  $version
-     * @return void
      */
-    protected function writeNewEnvironmentFileWith(string $version) {
+    protected function writeNewEnvironmentFileWith(string $version): void {
         $env_file_path = $this->getEnvironmentFilePath();
         $file_contents = file_get_contents($env_file_path);
         if (!str_contains($file_contents, self::ENV_PARAM.'=')) {
@@ -96,8 +85,6 @@ class AppVersion extends Command {
     /**
      * Get a regex pattern that will match env APP_VERSION with any random key.
      *     Taken & modified from Illuminate\Foundation\Console\KeyGenerateCommand
-     *
-     * @return string
      */
     protected function versionReplacementPattern(): string {
         $escaped = preg_quote('='.config(self::CONFIG_PARAM), '/');
