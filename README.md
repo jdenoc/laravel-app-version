@@ -14,11 +14,13 @@ composer require jdenoc/laravel-app-version
 
 ## Usage
 
+Get app version
 ```bash
-# Get app version
 php artisan app:version
+```
 
-# Set app version
+Set app version
+```bash
 php artisan app:version x.y.z
 ```
 
