@@ -1,3 +1,4 @@
+---
 # .github/workflows/tests.yml
 name: Laravel artisan app:version
 
@@ -21,13 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php-version: ['8.1']
+        php-version: ['8.2']
     name: PHP ${{ matrix.php-version }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Cache Composer dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /tmp/composer-cache
           key: cache-composer-${{ hashFiles('composer.json') }}-${{ matrix.php-version }}
@@ -36,7 +37,7 @@ jobs:
         with:
           php_version: ${{ matrix.php-version }}
 
-      - uses: php-actions/phpunit@v3
+      - uses: php-actions/phpunit@v4
         with:
           php_version: ${{ matrix.php-version }}
           version: 10
@@ -46,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:  # make sure the notification is sent AFTER the jobs you want included have completed
       - unit-test
-    if: ${{ always() }} # You always want to be notified: success, failure, or cancelled
+    if: ${{ always() }}  # You always want to be notified: success, failure, or cancelled
     timeout-minutes: 60
     steps:
       - name: discord

@@ -31,10 +31,12 @@ vendor/bin/phpunit
 ```
 
 ### PHP Version Support
-- 8.1
+- 8.2
 
 ### Laravel PHP Version
+- Laravel 11.x
 - Laravel 10.x
+  - Use version [4.0.1](https://github.com/jdenoc/laravel-app-version/tree/4.0.1)
 - Laravel 9.x
   - Use version [3.0.0](https://github.com/jdenoc/laravel-app-version/tree/3.0.0)
 - Laravel 8.x
